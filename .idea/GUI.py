@@ -1,21 +1,28 @@
 import Main
 
 def boardToString(board):
-    threeCell = ""
-    for i in board:
-        print("row")
-        if (len(threeCell) % 3 == 0):
-            print(threeCell)
-            threeCell = ""
-        for j in i:
+    output = ""
+    counter = 0
+    for row in board:
+        if len(output) > 0:
+            print(boardToStringHelper(output))
+            counter = counter + 1
+        # for line breaks
+        if counter == 3:
+            print(" ")
+            counter = 0
+        output = ""
+        for cell in row:
+            output = output + str(cell)
+    print(boardToStringHelper(output))
 
-            threeCell = threeCell + str(j)
-            # print(j)
+# This helps by dividing up each row and splicing it for the spacing
+def boardToStringHelper(row):
+    firstThird = row[0:3]
+    secondThird = row[3:6]
+    finalThird = row[6:9]
+    output = firstThird + " " + secondThird + " " + finalThird
+    return output
 
-
-
-
-
-print(Main.Board)
 
 boardToString(Main.Board)
