@@ -30,19 +30,19 @@ numberList = [1,2,3,4,5,6,7,8,9]
 def oneCellRowSearch(row):
     for cell in row:
         if cell == " ":
-            penFill = missingSingleCell(row)
-            row[row.index(" ")] = penFill
+            penFill = missingCells(row)
+            row[row.index(" ")] = penFill[0]
 
 
-# Iterates through numbers 1-9 and returns the missing value
-def missingSingleCell(row):
+# Iterates through numbers 1-9 and returns the missing values for empty cells
+def missingCells(row):
     # This lets numberList remain for future checks
     tempNumberList = numberList
     for cell in row:
         for number in tempNumberList:
             if number == cell:
                 tempNumberList.remove(number)
-    return(tempNumberList[0])
+    return(tempNumberList)
 
 
 oneCellRowSearch([2,1,8,3," ",9,7,4,5])
