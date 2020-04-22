@@ -13,7 +13,11 @@ def boardToString(board):
             counter = 0
         output = ""
         for cell in row:
-            output = output + str(cell)
+            # Checks to see if the cell has a value
+            if cell != " ":
+                output = output + str(cell)
+            else:
+                output = output + chr(128) # completely arbirtrary square ascii value
     print(boardToStringHelper(output))
 
 # This helps by dividing up each row and splicing it for the spacing
@@ -25,4 +29,4 @@ def boardToStringHelper(row):
     return output
 
 
-boardToString(Main.Board)
+boardToString(Main.testBoard)
