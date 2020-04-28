@@ -1,11 +1,23 @@
 class Cell:
+
     def __init__(self,row,column,value):
         self.row = row
         self.column = column
         if value == 0:
             self.value = [1,2,3,4,5,6,7,8,9]
+            # self.pen dictates whether the cell should still be manipulated or not
+            self.pen = False
         else:
             self.value = value
+            self.pen = True
+
+class Solver:
+
+    def __init__(self,board,rules):
+        self.board = board
+        # Rules are added for scale so that things like thermo-sudoku can be added later
+        # https://www.gmpuzzles.com/blog/sudoku-rules-and-info/thermo-sudoku-rules-and-info/
+        self.rules = "default"
 
 
 
