@@ -10,6 +10,31 @@ class Cell:
         else:
             self.value = value
             self.pen = True
+        # Dictates the 3x3 square the cell is in
+        if row < 4:
+            if column < 4:
+                self.square = 1
+            if 3 < column < 7:
+                self.square = 2
+            if  6 < column:
+                self.square = 3
+        if 3 < row < 7:
+            if column < 4:
+                self.square = 4
+            if 3 < column < 7:
+                self.square = 5
+            if  6 < column:
+                self.square = 6
+        if 6 < row:
+            if column < 4:
+                self.square = 7
+            if 3 < column < 7:
+                self.square = 8
+            if  6 < column:
+                self.square = 9
+
+
+
 
 class Solver:
 
@@ -18,6 +43,12 @@ class Solver:
         # Rules are added for scale so that things like thermo-sudoku can be added later
         # https://www.gmpuzzles.com/blog/sudoku-rules-and-info/thermo-sudoku-rules-and-info/
         self.rules = "default"
+
+    # Converts a cell from it's list of possible values to the only value that should be left in the cell
+    def fillInPen(self,Cell):
+        if cell.pen:
+            self.board[Cell.row][Cell.column] = Cell.value[0]
+
 
 
 
