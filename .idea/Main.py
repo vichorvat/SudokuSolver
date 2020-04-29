@@ -105,7 +105,3 @@ def emptyCellSearch(board):
         if oneCellCheck(col):
             oneCellFill(col)
 
-
-# emptyCellSearch(testBoard)
-
-rowToCol(testFullBoard)
