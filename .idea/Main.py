@@ -5,11 +5,8 @@ class Cell:
         self.column = column
         if value == 0:
             self.value = [1,2,3,4,5,6,7,8,9]
-            # self.pen dictates whether the cell should still be manipulated or not
-            self.pen = False
         else:
             self.value = value
-            self.pen = True
         # Dictates the 3x3 square the cell is in
         if row < 4:
             if column < 4:
@@ -44,11 +41,12 @@ class Solver:
         # https://www.gmpuzzles.com/blog/sudoku-rules-and-info/thermo-sudoku-rules-and-info/
         self.rules = "default"
 
-    # Converts a cell from it's list of possible values to the only value that should be left in the cell
-    def fillInPen(self,Cell):
-        if cell.pen:
-            self.board[Cell.row][Cell.column] = Cell.value[0]
-
+    # Fills in cells that can only have one possible value
+    def penFill(self,space):
+        for Cell in space:
+            if isinstance(Cell.value,list):
+                if len(Cell.value) == 1:
+                    Cell.value = Cell.value[0]
 
 
 
@@ -80,23 +78,9 @@ testBoard =[
 ]
 
 
-# Combs through a row to find and fill an empty cell
-def oneCellFill(row):
-    for cell in row:
-        if cell == " ":
-            penFill = cellFillHelper(row)
-            row[row.index(" ")] = penFill[0]
 
-# Checks to see if there is only one empty cell in a row,column or 3x3
-def oneCellCheck(row):
-    emptyCount = 0
-    for number in row:
-        if number == " ":
-            emptyCount = emptyCount + 1
-    if emptyCount == 1:
-        return True
-    else:
-        return False
+
+
 
 # Iterates through numbers 1-9 and returns the missing values for empty cells
 def cellFillHelper(row):
@@ -120,21 +104,6 @@ def emptyCellSearch(board):
     for col in colBoard:
         if oneCellCheck(col):
             oneCellFill(col)
-
-
-# Converts from board of rows, to board of columns
-def rowToCol(board):
-    print(board)
-    colBoard = []
-    column = []
-    for x in range((len(board[0]))):
-        for y in board:
-            # print("y: "+str(y))
-            # print("x: "+str(x))
-            column.append(y[x])
-        colBoard.append(column)
-        column = []
-    print(colBoard)
 
 
 # emptyCellSearch(testBoard)
