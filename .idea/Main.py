@@ -86,31 +86,3 @@ testBoard =[
     [Cell(8,1,6),Cell(8,2,0),Cell(8,3,0),Cell(8,4,8),Cell(8,5,0),Cell(8,6,7),Cell(8,7,2),Cell(8,8,0),Cell(8,9,0)],
     [Cell(9,1,0),Cell(9,2,0),Cell(9,3,7),Cell(9,4,0),Cell(9,5,5),Cell(9,6,0),Cell(9,7,3),Cell(9,8,6),Cell(9,9,0)],
 ]
-
-
-
-
-
-
-# Iterates through numbers 1-9 and returns the missing values for empty cells
-def cellFillHelper(row):
-    # This lets numberList remain for future checks
-    tempNumberList = [1,2,3,4,5,6,7,8,9]
-    for cell in row:
-        for number in tempNumberList:
-            if number == cell:
-                tempNumberList.remove(number)
-    return(tempNumberList)
-
-
-# # Searches the sudoku for missing cells
-def emptyCellSearch(board):
-    # Check rows
-    for row in board:
-        if oneCellCheck(row):
-            oneCellFill(row)
-    # Check columns
-    colBoard = rowToCol(board)
-    for col in colBoard:
-        if oneCellCheck(col):
-            oneCellFill(col)
