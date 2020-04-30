@@ -35,7 +35,7 @@ class Cell:
 
 class Solver:
 
-    def __init__(self,board,rules):
+    def __init__(self,board):
         self.board = board
         # Rules are added for scale so that things like thermo-sudoku can be added later
         # https://www.gmpuzzles.com/blog/sudoku-rules-and-info/thermo-sudoku-rules-and-info/
@@ -44,10 +44,20 @@ class Solver:
     # Fills in cells that can only have one possible value
     def penFill(self,space):
         for Cell in space:
-            if isinstance(Cell.value,list):
-                if len(Cell.value) == 1:
-                    Cell.value = Cell.value[0]
+            if isinstance(Cell.value,list) and len(Cell.value) == 1:
+                Cell.value = Cell.value[0]
 
+    # For each row,col or 3x3 in the board, find the values that are already set, then remove those values
+    # from the other cells in that space
+    def erase(self):
+        penValues = []
+        for space in self.board:
+            for cell in space:
+                if isinstance(cell.value,int):
+                    penValues.append(cell.value)
+            for cell in space:
+                if isinstance(cell.value,list):
+                    cell.value.remove(penValues)
 
 
 # Testing board quickly made from sudoku app easy difficulty
@@ -104,4 +114,3 @@ def emptyCellSearch(board):
     for col in colBoard:
         if oneCellCheck(col):
             oneCellFill(col)
-
