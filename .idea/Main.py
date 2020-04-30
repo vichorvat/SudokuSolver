@@ -49,15 +49,15 @@ class Solver:
 
     # For each row,col or 3x3 in the board, find the values that are already set, then remove those values
     # from the other cells in that space
-    def erase(self):
+    def erase(self,space):
         penValues = []
-        for space in self.board:
-            for cell in space:
-                if isinstance(cell.value,int):
-                    penValues.append(cell.value)
-            for cell in space:
-                if isinstance(cell.value,list):
-                    cell.value.remove(penValues)
+        for cell in space:
+            if isinstance(cell.value,int):
+                penValues.append(cell.value)
+        for cell in space:
+            if isinstance(cell.value,list):
+                for i in penValues:
+                    cell.value.remove(i)
 
 
 # Testing board quickly made from sudoku app easy difficulty
