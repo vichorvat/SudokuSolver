@@ -43,9 +43,9 @@ class Solver:
 
     # Fills in cells that can only have one possible value
     def penFill(self,space):
-        for Cell in space:
-            if isinstance(Cell.value,list) and len(Cell.value) == 1:
-                Cell.value = Cell.value[0]
+        for cell in space:
+            if isinstance(cell.value,list) and len(cell.value) == 1:
+                cell.value = cell.value[0]
 
     # For each row,col or 3x3 in the board, find the values that are already set, then remove those values
     # from the other cells in that space
@@ -58,6 +58,30 @@ class Solver:
             if isinstance(cell.value,list):
                 for i in penValues:
                     cell.value.remove(i)
+
+    # Finds values that belong to only one cell in a space
+    def soloPencilCells(self,space):
+        pencilValues = [1,2,3,4,5,6,7,8,9]
+        pencilCells = []
+        # Removes given values of the space from pencilValues
+        for cell in space:
+            if isinstance(cell.value,int):
+                pencilValues.remove(cell.value)
+        # This makes iterating through each cell with a list value easier
+        for cell in space:
+            if isinstance(cell.value,list):
+                pencilCells.append(cell)
+
+        # If an element from pencilValues occurs only in one cell from pencilCells, change that pencilCell to
+        # the pencilValue element
+        for num in pencilValues:
+            occur = 0
+            for cell in pencilCells:
+                if num in cell:
+                    occur = occur + 1
+            if occur == 1:
+                cell.value = num
+            occur = 0
 
 
 # Testing board quickly made from sudoku app easy difficulty
