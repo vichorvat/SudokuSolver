@@ -30,3 +30,5 @@ def boardToStringHelper(row):
 
 
 boardToString(Main.testBoard)
+boardToString(Main.firstSudoku.functionCycle())
+
