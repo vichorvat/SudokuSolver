@@ -60,7 +60,7 @@ class Solver:
                     try:
                         cell.value.remove(i)
                     except ValueError:
-                        print()
+                        pass
 
 
 # Finds values that belong to only one cell in a space
@@ -81,8 +81,13 @@ class Solver:
         for num in pencilValues:
             occur = 0
             for cell in pencilCells:
-                if num in cell.value:
-                    occur = occur + 1
+                try:
+                    if num in cell.value:
+                        occur = occur + 1
+                # Because of the order of the function cycle, a cell which should be penFill'd may be misssed
+                # This catches them
+                except TypeError:
+                    self.penFill([cell])
             if occur == 1:
                 cell.value = num
             occur = 0
@@ -117,20 +122,21 @@ class Solver:
                 currentCol = []
                 col = col + 1
 
-            square = 1
-            while square < 10:
+            box = 1
+            while box < 10:
                 currentSquare = []
                 for square in self.board:
                     for cell in square:
-                        if cell.square == square:
+                        if cell.column == box:
                             currentSquare.append(cell)
                 self.erase(currentSquare)
                 self.penFill(currentSquare)
                 self.soloPencilCells(currentSquare)
                 currentSquare = []
-                square = square + 1
+                box = box + 1
 
             boardCompletion = self.completeCheck()
+            print("cycle complete")
         return self.board
 
 
