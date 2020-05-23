@@ -46,6 +46,7 @@ class Solver:
         for cell in space:
             if isinstance(cell.value,list) and len(cell.value) == 1:
                 cell.value = cell.value[0]
+                return True
 
     # For each row,col or 3x3 in the board, find the values that are already set, then remove those values
     # from the other cells in that space
@@ -70,6 +71,8 @@ class Solver:
         # Removes given values of the space from pencilValues
         for cell in space:
             if isinstance(cell.value,int):
+                # print("pencilValues: " + str(pencilValues))
+                # print("cell.value" + str(cell.value))
                 pencilValues.remove(cell.value)
         # This makes iterating through each cell with a list value easier
         for cell in space:
@@ -100,14 +103,36 @@ class Solver:
                     return False
         return True
 
+    def spaceCycle(self,cellAttribute,nestedFunc):
+        space = 1
+        while space < 10:
+            currentSpace = []
+            for row in self.board:
+                for cell in row:
+                    if cell.cellAttribute == space:
+                        currentSpace.append(cell)
+                nestedFunc(currentSpace)
+            currentSpace = []
+            space = space + 1
+
+
     # This calls all the functions
+    # Not in the right fashion thoguh, these nested while loops need to be functions of their own
+    # Pretty sure that erase needs to be run on every space, then penFill, then if penFill makes no changes
+    # soloPencilCells
+    # These functions are enough to finish off testBoard
     def functionCycle(self):
         boardCompletion = self.completeCheck()
         while boardCompletion == False:
-            for row in self.board:
-                self.erase(row)
-                self.penFill(row)
-                self.soloPencilCells(row)
+            # for row in self.board:
+            #     self.erase(row)
+            #     self.penFill(row)
+            #     self.soloPencilCells(row)
+
+            self.spaceCycle(row,self.erase())
+            if self.spaceCycle(cell.row,self.penFill()):
+                self.functionCycle()
+
 
             col = 1
             while col < 10:
@@ -169,5 +194,4 @@ testBoard =[
     [Cell(9,1,9),Cell(9,2,0),Cell(9,3,4),   Cell(9,4,3),Cell(9,5,1),Cell(9,6,0),    Cell(9,7,6),Cell(9,8,7),Cell(9,9,0)],
 ]
 
-firstSudoku = Solver(testBoard)
-
+board1 = Solver(testBoard)
