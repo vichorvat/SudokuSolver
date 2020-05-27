@@ -5,15 +5,19 @@ from tkinter import *
 
 root = Tk()
 root.title("SudokuSolver")
-def boardLoad():
-    for row in Main.testBoard:
+def boardLoad(board):
+    for row in board:
         for cell in row:
-            print(cell.value)
             label = Label(root, text = cell.value)
             label.grid(row = cell.row, column = cell.column)
 
 
-boardLoad()
-root.mainloop()
+GUIBoard = Main.board.functionCycle()
 
+
+
+boardLoad(GUIBoard)
+print(GUIBoard == Main.testFullBoard)
+
+root.mainloop()
 
