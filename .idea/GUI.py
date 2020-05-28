@@ -1,4 +1,5 @@
 import Main
+import Testing
 from tkinter import *
 
 
@@ -14,10 +15,10 @@ def boardLoad(board):
 
 GUIBoard = Main.board.functionCycle()
 
-
+print()
 
 boardLoad(GUIBoard)
 print(GUIBoard == Main.testFullBoard)
+print(Testing.SameCheck(Main.testFullBoard,GUIBoard))
 
 root.mainloop()
-
