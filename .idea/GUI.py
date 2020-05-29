@@ -13,12 +13,13 @@ def boardLoad(board):
             label.grid(row = cell.row, column = cell.column)
 
 
+# GUIBoard = Main.board.functionCycle()
 GUIBoard = Main.board.functionCycle()
 
-print()
+
+
 
 boardLoad(GUIBoard)
-print(GUIBoard == Main.testFullBoard)
-print(Testing.SameCheck(Main.testFullBoard,GUIBoard))
+
 
 root.mainloop()
