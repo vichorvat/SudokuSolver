@@ -197,7 +197,6 @@ testFullBoard2 =[
     [Cell(8,1,5),Cell(8,2,8),Cell(8,3,1),   Cell(8,4,4),Cell(8,5,2),Cell(8,6,9),    Cell(8,7,7),Cell(8,8,6),Cell(8,9,3)],
     [Cell(9,1,2),Cell(9,2,6),Cell(9,3,9),   Cell(9,4,3),Cell(9,5,7),Cell(9,6,8),    Cell(9,7,4),Cell(9,8,1),Cell(9,9,5)],
 ]
-
 testBoard1 =[
     [Cell(1,1,3),Cell(1,2,7),Cell(1,3,8),   Cell(1,4,6),Cell(1,5,2),Cell(1,6,9),    Cell(1,7,4),Cell(1,8,0),Cell(1,9,5)],
     [Cell(2,1,0),Cell(2,2,0),Cell(2,3,9),   Cell(2,4,0),Cell(2,5,0),Cell(2,6,1),    Cell(2,7,7),Cell(2,8,6),Cell(2,9,0)],
@@ -211,7 +210,6 @@ testBoard1 =[
     [Cell(8,1,0),Cell(8,2,5),Cell(8,3,7),   Cell(8,4,0),Cell(8,5,0),Cell(8,6,0),    Cell(8,7,0),Cell(8,8,0),Cell(8,9,1)],
     [Cell(9,1,9),Cell(9,2,0),Cell(9,3,4),   Cell(9,4,3),Cell(9,5,1),Cell(9,6,0),    Cell(9,7,6),Cell(9,8,7),Cell(9,9,0)],
 ]
-
 testBoard2 =[
     [Cell(1,1,0),Cell(1,2,9),Cell(1,3,4),   Cell(1,4,0),Cell(1,5,3),Cell(1,6,0),    Cell(1,7,1),Cell(1,8,0),Cell(1,9,0)],
     [Cell(2,1,8),Cell(2,2,1),Cell(2,3,2),   Cell(2,4,7),Cell(2,5,0),Cell(2,6,0),    Cell(2,7,0),Cell(2,8,9),Cell(2,9,6)],
