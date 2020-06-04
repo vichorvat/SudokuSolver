@@ -1,4 +1,3 @@
-import Main
 
 
 def SameCheck(fullBoard, emptyBoard):

@@ -1,4 +1,4 @@
-import Main
+import Solver
 import Testing
 from tkinter import *
 
@@ -6,6 +6,7 @@ from tkinter import *
 
 root = Tk()
 root.title("SudokuSolver")
+
 def boardLoad(board):
     for row in board:
         for cell in row:
@@ -60,13 +61,10 @@ def boardLoad(board):
         label = Label(root, text = "=")
         label.grid(row = 8, column = 9 + i)
 
-# GUIBoard = Main.board.functionCycle()
-GUIBoard = Main.board.functionCycle()
 
 
 
 
-boardLoad(GUIBoard)
-print(Testing.SameCheck(Main.testFullBoard3,GUIBoard))
 
-root.mainloop()
+
+
