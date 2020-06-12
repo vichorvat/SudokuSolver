@@ -1,4 +1,5 @@
-import unittest
+import Main
+import GUI
 
 def SameCheck(fullBoard, emptyBoard):
     for i in range(0,9):
