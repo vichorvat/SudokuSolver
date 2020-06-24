@@ -1,5 +1,3 @@
-import Solver
-import Testing
 from tkinter import *
 
 
@@ -61,10 +59,16 @@ def boardLoad(board):
         label = Label(root, text = "=")
         label.grid(row = 8, column = 9 + i)
 
+# This will be integrated later as a helper function to help users enter in their own boards for solving
+def stringToBoard(str,board):
+
+    # ranges defined by row and row.length respectively
+    for i in range(0,9):
+        for j in range(0,9):
+            board[i][j].value = str[i*9 + j]
+            # print(str[i*9 + j])
 
 
 
-
-
-
-
+# stringToBoard("568742913197368254342591687685213479734859162219476538473625891851934726926187345")
+# boardLoad(emptyBoard)
