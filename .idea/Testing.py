@@ -1,4 +1,5 @@
 import unittest
+import GUI
 
 def SameCheck(fullBoard, emptyBoard):
     for i in range(0,9):
@@ -9,5 +10,5 @@ def SameCheck(fullBoard, emptyBoard):
 
 
 # Black box testing for GUI.stringToBoard
-print("GUI.stringToBoard test == " + SameCheck(GUI.stringToBoard("568742913197368254342591687685213479734859162219476538473625891851934726926187345"),
-    Solver.testFullBoard3))
+# print("GUI.stringToBoard test == " + SameCheck(GUI.stringToBoard("568742913197368254342591687685213479734859162219476538473625891851934726926187345"),
+#     Solver.testFullBoard3))
