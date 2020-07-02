@@ -66,7 +66,7 @@ class Solver:
 
 # Finds values that belong to only one cell in a space
     def soloPencilCells(self,space):
-        pencilValues = [1,2,2,3,4,5,6,7,9]
+        pencilValues = [1,2,3,4,5,6,7,8,9]
         pencilCells = []
         # Removes given values of the space from pencilValues
         for cell in space:
