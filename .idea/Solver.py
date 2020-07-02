@@ -132,8 +132,8 @@ class Solver:
                 # self.soloPencilCells(row)
 
             # Checks each column of the board
-            col = 1
-            while col < 10:
+            col = 0
+            while col < 9:
                 currentCol = []
                 for column in self.board:
                     for cell in column:
@@ -147,8 +147,8 @@ class Solver:
             col = 0
 
             # Checks each 3x3 square of the board
-            box = 1
-            while box < 10:
+            box = 0
+            while box < 9:
                 currentSquare = []
                 for square in self.board:
                     for cell in square:
